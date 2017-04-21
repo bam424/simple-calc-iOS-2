@@ -130,23 +130,23 @@ class ViewController: UIViewController {
     
         if(operation == "+") {
             answer = left! + right!
-            text = String(answer)
+            text += " = \(String(answer))"
             display.text = text
         } else if (operation == "-") {
             answer = left! - right!
-            text = String(answer)
+            text += " = \(String(answer))"
             display.text = text
         } else if (operation == "*") {
             answer = left! * right!
-            text = String(answer)
+            text += " = \(String(answer))"
             display.text = text
         } else if (operation == "/") {
             answer = left! / right!
-            text = String(answer)
+            text += " = \(String(answer))"
             display.text = text
         } else if (operation == "%") {
             answer = left! % right!
-            text = String(answer)
+            text += " = \(String(answer))"
             display.text = text
         } else if (operation == "count") {
             var numbers = display.text!.components(separatedBy: " count ")
@@ -154,7 +154,7 @@ class ViewController: UIViewController {
             for i in 0...numbers.count - 1 {
                 countArray.append(Int(numbers[i])!)
             }
-            text = String(countArray.count)
+            text += " => \(String(countArray.count))"
             display.text = text
         } else if (operation == "avg") {
             var numbers = display.text!.components(separatedBy: " avg ")
@@ -163,7 +163,7 @@ class ViewController: UIViewController {
                 total += Int(numbers[i])!
             }
             answer = total / numbers.count
-            text = String(answer)
+            text += " => \(String(answer))"
             display.text = text
         } else { //factorial operation
             let fact = Int(left!);
@@ -171,7 +171,7 @@ class ViewController: UIViewController {
             for integer in 1...fact {
                 ans = ans * integer;
             }
-            text = String(ans)
+            text += " => \(String(ans))"
             display.text = text
         }
     }
