@@ -290,10 +290,10 @@
             </objects>
             <point key="canvasLocation" x="-474.39999999999998" y="139.880059970015"/>
         </scene>
-        <!--View Controller-->
+        <!--History View Controller-->
         <scene sceneID="hYe-Br-75o">
             <objects>
-                <viewController id="J5J-sc-hDL" sceneMemberID="viewController">
+                <viewController id="J5J-sc-hDL" customClass="HistoryViewController" customModule="SimpleCalc" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fBK-Oj-qpK"/>
                         <viewControllerLayoutGuide type="bottom" id="W3z-e6-WUC"/>
@@ -302,10 +302,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9XN-xz-905">
-                                <rect key="frame" x="16" y="73" width="343" height="574"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZPg-hq-nL6">
                                 <rect key="frame" x="0.0" y="0.0" width="182" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -317,9 +313,19 @@
                                     <segue destination="BYZ-38-t0r" kind="show" id="2g5-db-5yS"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xwy-gp-WoP">
+                                <rect key="frame" x="16" y="66" width="343" height="581"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="equationHistory" destination="Xwy-gp-WoP" id="aVX-yR-b4w"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f1u-YQ-PPH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

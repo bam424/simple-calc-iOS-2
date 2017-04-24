@@ -11,9 +11,9 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var display: UILabel!
-    @IBOutlet weak var rpnStatus: UILabel!
     
     public var text = ""
+    public var equation = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,11 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let history = segue.destination as! HistoryViewController
+        history.equationHistory.text! = equation + "\n"
     }
 
 
@@ -122,31 +127,32 @@ class ViewController: UIViewController {
     }
     
     @IBAction func calculateButton(_ sender: Any) {
-        var equation : Array = text.components(separatedBy: " ")
+        var equationArray : Array = text.components(separatedBy: " ")
         var answer = 0
-        let left = Int(equation[0])
-        let operation = String(equation[1])
-        let right = Int(equation[2])
+        let left = Int(equationArray[0])
+        let operation = String(equationArray[1])
+        let right = Int(equationArray[2])
+        equation = text
     
         if(operation == "+") {
             answer = left! + right!
-            text += " = \(String(answer))"
+            text = " = \(String(answer))"
             display.text = text
         } else if (operation == "-") {
             answer = left! - right!
-            text += " = \(String(answer))"
+            text = "\(String(answer))"
             display.text = text
         } else if (operation == "*") {
             answer = left! * right!
-            text += " = \(String(answer))"
+            text = "\(String(answer))"
             display.text = text
         } else if (operation == "/") {
             answer = left! / right!
-            text += " = \(String(answer))"
+            text = "\(String(answer))"
             display.text = text
         } else if (operation == "%") {
             answer = left! % right!
-            text += " = \(String(answer))"
+            text = "\(String(answer))"
             display.text = text
         } else if (operation == "count") {
             var numbers = display.text!.components(separatedBy: " count ")
@@ -154,7 +160,7 @@ class ViewController: UIViewController {
             for i in 0...numbers.count - 1 {
                 countArray.append(Int(numbers[i])!)
             }
-            text += " => \(String(countArray.count))"
+            text = "\(String(countArray.count))"
             display.text = text
         } else if (operation == "avg") {
             var numbers = display.text!.components(separatedBy: " avg ")
@@ -163,17 +169,18 @@ class ViewController: UIViewController {
                 total += Int(numbers[i])!
             }
             answer = total / numbers.count
-            text += " => \(String(answer))"
+            text = "\(String(answer))"
             display.text = text
         } else { //factorial operation
             let fact = Int(left!);
             var ans = 1;
             for integer in 1...fact {
-                ans = ans * integer;
+                answer = ans * integer;
             }
-            text += " => \(String(ans))"
+            text = "\(String(answer))"
             display.text = text
         }
+        equation += " = \(answer)"
     }
 }
 
