@@ -9,17 +9,37 @@
 import UIKit
 
 class HistoryViewController: UIViewController {
-    var equation = ""
-    @IBOutlet weak var equationHistory: UILabel!
+    var equation : String!
+    var equationHistory : [String] = []
+    
+    
+    @IBOutlet weak var equationHistoryView: UIScrollView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        var spacer: CGFloat = 50
+        for equation in equationHistory {
+            let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21 + spacer))
+             label.text = equation
+             self.view.addSubview(label)
+             spacer = spacer + 50
+            label.text! = equation
+            equationHistoryView.addSubview(label)
+        }
+        //self.equationHistoryView.text! = self.equation
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let history = segue.destination as! ViewController
+        history.equationHistory = equationHistory
+        //history.equation = equation
     }
     
 

@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var display: UILabel!
     
     public var text = ""
+    var equationHistory : [String] = []
     public var equation = ""
     
     override func viewDidLoad() {
@@ -26,8 +27,11 @@ class ViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let history = segue.destination as! HistoryViewController
-        history.equationHistory.text! = equation + "\n"
+        if(segue.identifier == "historySegue"){
+            let history = segue.destination as! HistoryViewController
+            history.equationHistory = equationHistory
+          //  history.equation = equation
+        }
     }
 
 
@@ -136,7 +140,7 @@ class ViewController: UIViewController {
     
         if(operation == "+") {
             answer = left! + right!
-            text = " = \(String(answer))"
+            text = "\(String(answer))"
             display.text = text
         } else if (operation == "-") {
             answer = left! - right!
@@ -181,6 +185,7 @@ class ViewController: UIViewController {
             display.text = text
         }
         equation += " = \(answer)"
+        equationHistory.append(equation)
     }
 }
 
