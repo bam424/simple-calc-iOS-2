@@ -179,8 +179,9 @@ class ViewController: UIViewController {
             let fact = Int(left!);
             var ans = 1;
             for integer in 1...fact {
-                answer = ans * integer;
+                ans = ans * integer;
             }
+            answer = ans
             text = "\(String(answer))"
             display.text = text
         }
