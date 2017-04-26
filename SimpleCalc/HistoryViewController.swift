@@ -20,11 +20,12 @@ class HistoryViewController: UIViewController {
         
         var spacer: CGFloat = 50
         for equation in equationHistory {
-            let label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 21 + spacer))
+            let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 21 + spacer))
              label.text = equation
              self.view.addSubview(label)
-             spacer = spacer + 50
+             spacer = spacer + 5
             label.text! = equation
+            label.backgroundColor = UIColor(red: 0/255, green: 159/255, blue: 184/255, alpha: 1.0)
             equationHistoryView.addSubview(label)
         }
         //self.equationHistoryView.text! = self.equation
